@@ -1,4 +1,3 @@
-import React from 'react'
 import './index.css'
 import { ToastContainer } from 'react-toastify';
   import RoutesComponent from './Routes.tsx'

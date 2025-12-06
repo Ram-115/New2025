@@ -1,5 +1,5 @@
-import { Button, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
+import { useEffect, useState } from 'react'
 const OurCustomersPage = () => {
     const [customers, setCustomers] = useState([]);
     const getCustomers = async()=>{
@@ -20,7 +20,7 @@ const OurCustomersPage = () => {
             </TableRow>
         </TableHead>
         <TableBody> 
-            {customers.length > 0 ? (
+            {customers?.length > 0 ? (
             <>
             {customers.map((customer:any)=>(
             <TableRow>
