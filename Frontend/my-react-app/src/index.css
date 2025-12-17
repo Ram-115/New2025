@@ -24,7 +24,7 @@
   /* BORDERS*/
   --brdrBlackColor: rgba(0, 0, 0, 0.12);
   --brdrWhiteColor: rgba(255, 255, 255, 0.16);
-  --primaryColor: #24a4c4
+  --primaryColor: #0b4938;
 
   /* TOP PADDING AND HEADER HEIGHSTS */
 
@@ -213,7 +213,7 @@ a {
 }
 
 .link {
-  color: var(--primaryColor);
+  color: #0b4938;
   cursor: pointer;
 }
 
@@ -235,17 +235,19 @@ a {
   position: relative; /* Ensures overlay positioning */
   transition: filter 0.3s ease; /* Optional smooth transition */
 }
-
+.tr:hover{
+  background-color: #fcfafa !important;
+}
 .hdingWXLG {
   font-size: 32px;
   font-weight: 500;
-  color: #ffffff;
+  color:#0b4938;
 }
 
 .hdingWLG {
   font-size: 20px;
   font-weight: 500;
-  color: #ffffff;
+    color: #0b4938;
 }
 
 .subHdingWMD {
@@ -253,7 +255,12 @@ a {
   font-weight: 400;
   color: #ffffff;
 }
-
+.whiteTxt {
+  color: #ffffff;
+}
+.blackTxt {
+  color: #000;
+}
 .subHdingWMD {
   font-size: 12px;
   font-weight: 500;
@@ -371,7 +378,7 @@ a {
 .btnTxtBlue {
   font-size: 16px;
   font-weight: 400;
-  color: var(--primaryColor)
+  color: #0b4938;
 }
 
 .successTxt {
@@ -616,6 +623,8 @@ button{
 .positionAbs {
   position: absolute;
 }
+.editBtn{ position: absolute; z-index: 1; bottom: 0;  background-color: white; cursor: pointer; text-align: center; }
+
 
 .positionRelative {
   position: relative;
@@ -761,7 +770,7 @@ button{
 }
 
 .primaryBg {
-  background-color: var(--primaryColor)
+  background-color: #0b4938;
 }
 .lanS{background-color: #EDEDED;}
 
@@ -854,7 +863,7 @@ button{
 .brdrLight {
   border: 1px solid #e7ebee;
 }
-.brdrprimarySM {border: 1px solid var(--primaryColor);}
+.brdrprimarySM {border: 1px solid #0b4938;}
 
 
 /* PADDING ALL SIDES */
@@ -1428,6 +1437,9 @@ button{
 .wid30 {width: 100%;}
 .halfWidth{
   width: 50%;
+}
+.primaryColor{
+  color: #0b4938;
 }
 
 .fullH {
