@@ -47,7 +47,7 @@ const LoginPage = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
             <div className='flexRow fullH' style={{padding: '30px', borderRadius: '10px'}}>
-                {!isMobile && <div className='flexCol halfWidth jCntr aCntr' style={{backgroundColor: '#0b4938', borderRadius:'10px 0px 0px 10px'}}>
+                {!isMobile && <div className='flexCol halfWidth jCntr aCntr' style={{backgroundColor: '#0C5A96', borderRadius:'10px 0px 0px 10px'}}>
                   <div style={{width:'250px', height:'250px'}}>
                     <img src={'/public/Icons/LoginBanner.png'} alt="logo" />
                   </div>
@@ -88,7 +88,7 @@ const LoginPage = () => {
 </div>
                         <Button fullWidth variant="contained" type="submit">Login</Button>
                     </form>
-                    <span style={{marginTop: '20px'}}>Don't have an account? <Link style={{color: '#0b4938', textDecoration: 'none'}} to="/signup">Sign up</Link></span>
+                    <span style={{marginTop: '20px'}}>Don't have an account? <Link style={{color: '#0C5A96', textDecoration: 'none'}} to="/signup">Sign up</Link></span>
                 </div>
             </div>
 

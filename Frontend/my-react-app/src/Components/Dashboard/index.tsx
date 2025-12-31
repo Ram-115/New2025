@@ -1,4 +1,4 @@
-import { Avatar, Menu, MenuItem } from '@mui/material';
+import { Avatar, Badge, Menu, MenuItem } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import DiamondIcon from '@mui/icons-material/Diamond';
@@ -11,7 +11,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Layout from './Components/Layout';
-
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
+import ZoomInMapIcon from '@mui/icons-material/ZoomInMap';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Notifications from './Components/Notifications';
 const DashboardPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -22,6 +25,7 @@ const DashboardPage = () => {
     console.log('user111', user);
     const [openProfile, setOpenProfile] = useState(false);
     const [openDelete, setOpenDelete] = useState(false);
+    const [openNotifications, setOpenNotifications] = useState(false);
     const isMobile = useMediaQuery('(max-width: 600px)');
     const handleOpen = (event: React.MouseEvent<HTMLDivElement>) => {
         setAnchorEl(event.currentTarget);
@@ -37,23 +41,43 @@ const DashboardPage = () => {
     // Routes that should show Layout (sidebar)
     const routesWithLayout = ['/home'];
     const shouldShowLayout = routesWithLayout.includes(location.pathname);
+    const [isFullscreen, setIsFullscreen] = useState(false);
+    const handleFullscreen = async () => {
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen();
+          setIsFullscreen(true);
+        } else {
+          await document.exitFullscreen();
+          setIsFullscreen(false);
+        }
+      };
 
+      
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }} className='fullH' >
             <div style={{ display: 'flex', flexDirection: 'column' }} className='fullH'>
                 {/* Header - Always shown */}
-                <div className='flexAutoCol pdngMD' style={{ background: 'linear-gradient(135deg, #0b4938 0%, #1a6b5a 50%, #0b4938 100%)', color: '#fff' }}>
+                <div className='flexAutoCol pdngMD' style={{ background: '#0C5A96', color: '#fff' }}>
                     <div className='flexRow jBtwn aCntr'>
+                        <div className='flexAutoRow gap16 aCntr'>
                         {isMobile && (
                             <div className='flexAutoRow aCntr gap16' onClick={() => setOpenDrawer(true)}
                                 style={{ cursor: 'pointer' }}><MenuIcon style={{ fontSize: '24px', color: '#fff' }} /></div>
                         )}
                         <div className='flexAutoRow aCntr gap16'>
                             <DiamondIcon style={{ fontSize: '36px', color: '#fff' }} />
+                            {/* <img src={'/Icons/clothnew.png'} alt='' style={{width:'100px', height:'100px'}}/> */}
                             {/* <span style={{ fontSize: '18px', fontWeight: '600', color: '#fff', fontFamily: '-moz-initial' }}>Clothing New</span> */}
                         </div>
-                        <div className='flexAutoRow'>
+                        </div>
+                        <div className='flexMinWidthRow aCntr jEnd' style={{ gap: '24px' }}>
+                        <div className='flexAutoRow gap16 aCntr'>
+                            <Badge badgeContent={4} color="error"><NotificationsIcon style={{ fontSize: '24px', color: '#fff' ,cursor: 'pointer'}} onClick={() => setOpenNotifications(true)}/></Badge>
+                        </div>
+                        <div className='flexAutoRow gap16 aCntr'>
+                            {isFullscreen ? <ZoomInMapIcon style={{ fontSize: '24px', color: '#fff' ,cursor: 'pointer'}} onClick={handleFullscreen} /> : <ZoomOutMapIcon style={{ fontSize: '24px', color: '#fff' ,cursor: 'pointer'}} onClick={handleFullscreen} />}
                             <Avatar src={user?.profileImage || '/public/Icons/avatar.png'} alt='' onClick={handleOpen} style={{ width: '36px', height: '36px', objectFit: 'contain', cursor: 'pointer' }} />
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -117,7 +141,7 @@ const DashboardPage = () => {
                             fontWeight: 600,
                             fontSize: '18px',
                             borderBottom: '1px solid rgb(181, 204, 198)',
-                            background: '#0b4938',
+                            background: '#0C5A96',
                             color: '#fff'
                         }}
                     >
@@ -164,8 +188,34 @@ const DashboardPage = () => {
                         >
                             Shopping
                         </span>
+
+                        <span style={{fontSize: '18px', borderBottom: '1px solid rgb(181, 204, 198)', backgroundColor: active === '/orders' ? 'rgb(210 232 226)' : 'transparent',}}
+                            className='fontWeightBold pdngSM pointer'
+                            onClick={() => {
+                                navigate('/orders');
+                                setOpenDrawer(false);
+                            }}
+                        >
+                            Orders
+                        </span>
+                        <span style={{fontSize: '18px', borderBottom: '1px solid rgb(181, 204, 198)', backgroundColor: active === '/analytics' ? 'rgb(210 232 226)' : 'transparent',}}
+                            className='fontWeightBold pdngSM pointer'
+                            onClick={() => {
+                                navigate('/analytics');
+                                setOpenDrawer(false);
+                            }}
+                        >
+                            Analytics
+                        </span>
                     </div>
                 </div>
+            </Drawer>
+            <Drawer
+                anchor="right"
+                open={openNotifications}
+                onClose={() => setOpenNotifications(false)}
+            >
+                <Notifications handleClose={() => setOpenNotifications(false)} />
             </Drawer>
 
         </div>

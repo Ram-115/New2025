@@ -22,8 +22,8 @@ import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
 import HomeIcon from '@mui/icons-material/Home';
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
-import StyleIcon from '@mui/icons-material/Style';   
-import TextRotationNoneIcon from '@mui/icons-material/TextRotationNone'; 
+import StyleIcon from '@mui/icons-material/Style';
+import TextRotationNoneIcon from '@mui/icons-material/TextRotationNone';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 const ShoppingPage = () => {
     const [products, setProducts] = useState<any[]>([]);
@@ -78,7 +78,8 @@ const ShoppingPage = () => {
                 ProductImage: product.ProductImage,
                 ProductDescription: product.Description,
                 ProductPrice: product.Price,
-                totalQuantity: 1
+                totalQuantity: 1,
+                Stock: product.Stock
             };
 
             const response = await axios.post(
@@ -101,6 +102,7 @@ const ShoppingPage = () => {
     const handleCategoryChange = (event: any) => {
         setCategoryBy(event.target.value);
     };
+    console.log("filteredProducts", filteredProducts , );
 
     return (
         <div
@@ -115,7 +117,7 @@ const ShoppingPage = () => {
                     bottom: '30px',
                     width: '50px',
                     height: '50px',
-                    backgroundColor: '#0b4938',
+                    backgroundColor: '#0C5A96',
                     borderRadius: '50%',
                     display: 'flex',
                     justifyContent: 'center',
@@ -165,46 +167,46 @@ const ShoppingPage = () => {
                             onChange={handleCategoryChange}
                         >
                             <MenuItem value={'All'}>
-                            <div className='flexRow aCntr'>
-                                <AllInclusiveIcon className='primaryColor'  style={{marginRight: '8px'}}/>
-                                All
-                            </div>
+                                <div className='flexRow aCntr'>
+                                    <AllInclusiveIcon className='primaryColor' style={{ marginRight: '8px' }} />
+                                    All
+                                </div>
                             </MenuItem>
                             <MenuItem value={'Electronics'}>
-                            <div className='flexRow aCntr'>
-                                <OfflineBoltIcon className='primaryColor'  style={{marginRight: '8px'}}/>
-                                Electronics
-                            </div>
+                                <div className='flexRow aCntr'>
+                                    <OfflineBoltIcon className='primaryColor' style={{ marginRight: '8px' }} />
+                                    Electronics
+                                </div>
                             </MenuItem>
                             <MenuItem value={'Clothing'}>
-                            <div className='flexRow aCntr'>
-                                <CheckroomIcon className='primaryColor'  style={{marginRight: '8px'}}/>
-                                Clothing
-                            </div>
+                                <div className='flexRow aCntr'>
+                                    <CheckroomIcon className='primaryColor' style={{ marginRight: '8px' }} />
+                                    Clothing
+                                </div>
                             </MenuItem>
                             <MenuItem value={'Home'}>
-                            <div className='flexRow aCntr'>
-                                <HomeIcon className='primaryColor'  style={{marginRight: '8px'}}/>
-                                Home
-                            </div>
+                                <div className='flexRow aCntr'>
+                                    <HomeIcon className='primaryColor' style={{ marginRight: '8px' }} />
+                                    Home
+                                </div>
                             </MenuItem>
                             <MenuItem value={'Sports'}>
-                            <div className='flexRow aCntr'>
-                                <SportsBaseballIcon className='primaryColor'  style={{marginRight: '8px'}}/>
-                                Sports
-                            </div>
+                                <div className='flexRow aCntr'>
+                                    <SportsBaseballIcon className='primaryColor' style={{ marginRight: '8px' }} />
+                                    Sports
+                                </div>
                             </MenuItem>
                             <MenuItem value={'Books'}>
-                            <div className='flexRow aCntr'>
-                                <StyleIcon className='primaryColor'  style={{marginRight: '8px'}}/>
-                                Books
-                            </div>
+                                <div className='flexRow aCntr'>
+                                    <StyleIcon className='primaryColor' style={{ marginRight: '8px' }} />
+                                    Books
+                                </div>
                             </MenuItem>
                             <MenuItem value={'Other'}>
-                            <div className='flexRow aCntr'>
-                                <TextRotationNoneIcon className='primaryColor'  style={{marginRight: '8px'}}/>
-                                Other
-                            </div>
+                                <div className='flexRow aCntr'>
+                                    <TextRotationNoneIcon className='primaryColor' style={{ marginRight: '8px' }} />
+                                    Other
+                                </div>
                             </MenuItem>
                         </Select>
                     </FormControl>
@@ -212,93 +214,102 @@ const ShoppingPage = () => {
             </div>
             {/* Products Grid */}
             <Grid container spacing={2} padding={3}>
-  {filteredProducts.length > 0 ? (
-    filteredProducts.map((item, index) => (
-      <Grid
-        item
-        key={index}
-        xs={12}    // mobile → 1 card
-        md={6}     // tablet → 2 cards
-        lg={4}     // desktop → 3 cards
-      >
-        <Grow in={true} timeout={500}>
-          <Card
-            style={{
-              height: '320px',
-              display: 'flex',
-              flexDirection: 'column',
-              border: '1px solid rgb(238, 242, 241)'
-            }}
-          >
-            <CardMedia
-              component="img"
-              height="140"
-              className="pdngSM"
-              style={{ objectFit: 'contain' }}
-              image={item.ProductImage}
-              alt={item.ProductName}
-            />
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map((item, index) => (
+                        <Grid
+                            item
+                            key={index}
+                            xs={12}    
+                            lg={4}  
+                        >
+                            <Grow in={true} timeout={500}>
+                                <Card
+                                    style={{
+                                        height: '420px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        position: 'relative',
+                                        border: '1px solid rgb(238, 242, 241)'
+                                    }}
+                                >
+                                    <CardMedia
+                                        component="img"
+                                        height="220"
+                                        className="pdngSM"
+                                        style={{ objectFit: 'contain' }}
+                                        image={item.ProductImage}
+                                        alt={item.ProductName}
+                                    />
 
-            <CardContent
-              style={{
-                borderTop: '1px solid rgb(238, 242, 241)',
-                display: 'flex',
-                flexDirection: 'column',
-                flexGrow: 1
-              }}
-            >
-              <Typography variant="h6" className="primaryColor">
-                {item.ProductName}
-              </Typography>
+                                    <CardContent
+                                        style={{
+                                            borderTop: '1px solid rgb(238, 242, 241)',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            flexGrow: 1
+                                        }}
+                                    >
+                                        <Typography variant="h6" className="primaryColor" style={{
+                                            maxWidth: '100%',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            whiteSpace: 'nowrap'
+                                        }}>
+                                            {item.ProductName}
+                                        </Typography>
 
-              <Typography variant="body1">
-                Price: ₹{item.Price}
-              </Typography>
+                                        <Typography variant="body1">
+                                            Price: ₹{item.Price}
+                                        </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{
-                  display: '-webkit-box',
-                  WebkitLineClamp: 2,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden',
-                  lineHeight: '1.5em',
-                  height: '3em',
-                  marginBottom: '12px',
-                  textAlign: 'justify'
-                }}
-              >
-                {item.Description}
-              </Typography>
+                                        <Typography
+                                            variant="body2"
+                                            sx={{
+                                                display: '-webkit-box',
+                                                WebkitLineClamp: 2,
+                                                WebkitBoxOrient: 'vertical',
+                                                overflow: 'hidden',
+                                                lineHeight: '1.5em',
+                                                height: '3em',
+                                                marginBottom: '12px',
+                                                textAlign: 'justify'
+                                            }}
+                                        >
+                                            {item.Description}
+                                        </Typography>
 
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ marginTop: 'auto' }}
-                onClick={() => handleAddToCart(item)}
-              >
-                Add to Cart
-              </Button>
-            </CardContent>
-          </Card>
-        </Grow>
-      </Grid>
-    ))
-  ) : (
-    <Grid item xs={12}>
-      <div className='flexCol jCntr aCntr fullW' style={{ height: '70vh' }}>
-        <img
-          src={'/public/Icons/noData.png'}
-          alt='No products found'
-          style={{ width: '100px', height: '100px' }}
-        />
-        <Typography variant='h6' className='pdngTSM'>
-          No products found
-        </Typography>
-      </div>
-    </Grid>
-  )}
-</Grid>
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            sx={{ marginTop: 'auto' }}
+                                            onClick={() => handleAddToCart(item)}
+                                        >
+                                            Add to Cart
+                                        </Button>
+                                    </CardContent>
+                                    {item?.Stock < 5 &&
+                                    <div className='flexRow jCntr aCntr fullW pdngXXS' style={{ width: '120px', borderRadius: '4px', fontSize: '11px',color: '#fff', position: 'absolute',top: '0', right: '0', backgroundColor: '#FF0000' }}>
+                                        Hurry Up! Only {item?.Stock} left
+                                    </div>}
+                                </Card>
+                            </Grow>
+                        </Grid>
+                    ))
+                ) : (
+                    <Grid item xs={12}>
+                        <div className='flexCol jCntr aCntr fullW' style={{ height: '70vh' }}>
+                            <img
+                                src={'/public/Icons/noData.png'}
+                                alt='No products found'
+                                style={{ width: '100px', height: '100px' }}
+                            />
+                            <Typography variant='h6' className='pdngTSM'>
+                                No products found
+                            </Typography>
+                        </div>
+                    </Grid>
+                )}
+            </Grid>
 
 
             {/* Cart Drawer */}

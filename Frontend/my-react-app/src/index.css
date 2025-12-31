@@ -24,7 +24,7 @@
   /* BORDERS*/
   --brdrBlackColor: rgba(0, 0, 0, 0.12);
   --brdrWhiteColor: rgba(255, 255, 255, 0.16);
-  --primaryColor: #0b4938;
+  --primaryColor: #0C5A96;
 
   /* TOP PADDING AND HEADER HEIGHSTS */
 
@@ -213,7 +213,7 @@ a {
 }
 
 .link {
-  color: #0b4938;
+  color: #0C5A96;
   cursor: pointer;
 }
 
@@ -241,13 +241,13 @@ a {
 .hdingWXLG {
   font-size: 32px;
   font-weight: 500;
-  color:#0b4938;
+  color:#0C5A96;
 }
 
 .hdingWLG {
   font-size: 20px;
   font-weight: 500;
-    color: #0b4938;
+    color: #0C5A96;
 }
 
 .subHdingWMD {
@@ -378,7 +378,7 @@ a {
 .btnTxtBlue {
   font-size: 16px;
   font-weight: 400;
-  color: #0b4938;
+  color: #0C5A96;
 }
 
 .successTxt {
@@ -770,7 +770,10 @@ button{
 }
 
 .primaryBg {
-  background-color: #0b4938;
+  background-color: #0C5A96;
+}
+.grayColor{
+  color: rgb(61, 60, 60);
 }
 .lanS{background-color: #EDEDED;}
 
@@ -863,7 +866,7 @@ button{
 .brdrLight {
   border: 1px solid #e7ebee;
 }
-.brdrprimarySM {border: 1px solid #0b4938;}
+.brdrprimarySM {border: 1px solid #0C5A96;}
 
 
 /* PADDING ALL SIDES */
@@ -1439,7 +1442,7 @@ button{
   width: 50%;
 }
 .primaryColor{
-  color: #0b4938;
+  color: #0C5A96 !important;
 }
 
 .fullH {

@@ -12,7 +12,7 @@ const DashboardHome = () => {
     <Box
       sx={{
         // minHeight: '100vh',
-        background: 'linear-gradient(135deg, #0b4938 0%, #1a6b5a 50%, #0b4938 100%)',
+        background: 'linear-gradient(135deg, #0C5A96 0%, #1a6b5a 50%, #0C5A96 100%)',
         position: 'relative',
         height: '100%',
         overflow: 'hidden',
@@ -109,7 +109,7 @@ const DashboardHome = () => {
               onClick={() => navigate('/shopping')}
               sx={{
                 backgroundColor: '#fff',
-                color: '#0b4938',
+                color: '#0C5A96',
                 fontSize: { xs: '1rem', md: '1.25rem' },
                 px: { xs: 4, md: 6 },
                 py: { xs: 1.5, md: 2 },

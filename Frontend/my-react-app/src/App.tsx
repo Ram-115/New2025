@@ -6,11 +6,13 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#0b4938",
+        // main: "#0C5A96",
+        main:'#0C5A96',
         contrastText: "#ffffff",
       },
       secondary: {
-        main: "#0b4938",
+        // main: "#0C5A96",
+      main:'#78B1EC',
         contrastText: "#ffffff",
       },
       background: {
@@ -18,7 +20,7 @@ function App() {
       },
       text: {
         primary: "#000000",
-        secondary: "#0b4938",
+        secondary: "#0C5A96",
       },
     },
   });
