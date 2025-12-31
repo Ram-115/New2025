@@ -38,6 +38,10 @@ const AddtoCartSchema = new mongoose.Schema({
     totalQuantity: {
         type: Number,
         required: true
+    },
+    Stock: {
+        type: Number,
+        required: true
     }
 },
     {
